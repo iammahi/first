@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{%load static %}
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+	.aa {
+		text-decoration:none;
+	}
+	
+	</style>
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+<body> 
+
+	<div class="container-fluid">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		
+		<main class="">
+			<div class="row">
+          
+              {% for order in order%}
+            <article class="col-lg-2 col-md-4 col-sm-6 col-12 tm-gallery-item p-3">
+						<figure>
+							<img src="{{order.img.url}}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{order.types}}</a></h4>
+								<p class="tm-gallery-description">{{order.dicr}}</p>
+								<p class="tm-gallery-price">${{order.price}}</p>
+							</figcaption>
+						</figure>
+			</article>
+			
+           {% endfor%}
+            </div>
+               <a href="../../" class="btn btn-outline-secondary">Back</a>
+			
+			</div>
+
+		</main>
+
+		<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2020 Brown Multi Cuisine Restaurant
+            
+            | Design: <a rel="nofollow" href="https://templatemo.com">Mahendra</a></p>
+		</footer>
+	</div>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+				
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+		
+	</script>
+	
+</body>
+</html>

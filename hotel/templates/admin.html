@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us" dir="ltr">
+<head>
+<title>Site administration | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer></script>
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" dashboard"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name"><a href="#">Django administration</a></h1>
+                <h3><a href="{% url 'dashboard' %}">Dashboard</a></h3>
+
+        </div>
+        
+        
+        <div id="user-tools">
+            
+                Welcome,
+                <strong>mahi</strong>.
+            
+            
+                
+                    <a href="#/">View site</a> /
+                
+                
+                    
+                    
+                
+                
+                <a href="#">Change password</a> /
+                
+                <a href="#">Log out</a>
+            
+        </div>  
+    </div>
+    <!-- END Header -->
+    
+    
+
+    <div class="main shifted" id="main">
+      
+        
+      
+      <div class="content">
+        
+          
+        
+        <!-- Content -->
+        <div id="content" class="colMS">
+          
+          <h1>Site administration</h1>
+          
+          
+<div id="content-main">
+  
+
+
+  
+    <div class="app-auth module">
+      <table>
+        <caption>
+          <a href="#" class="section" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+        </caption>
+        
+        
+          <tr class="model-user">
+            
+              <th scope="row"><a href="#/admin/auth/user/">Users</a></th>
+            
+
+            
+              <td><a href="#" class="addlink">Add</a></td>
+            
+
+            
+              
+                <td><a href="#" class="changelink">Change</a></td>
+              
+            
+          </tr>
+        
+      </table>
+    </div>
+  
+    <div class="app-hotel module">
+      <table>
+        <caption>
+          <a href="#/admin/hotel/" class="section" title="Models in the Hotel application">Hotel</a>
+        </caption>
+        
+          <tr class="model-address">
+            
+              <th scope="row"><a href="#">Addresss</a></th>
+            
+
+            
+              <td><a href="#" class="addlink">Add</a></td>
+            
+
+            
+              
+                <td><a href="#" class="changelink">Change</a></td>
+              
+            
+          </tr>
+        
+          <tr class="model-items">
+            
+              <th scope="row"><a href="#">Itemss</a></th>
+            
+
+            
+              <td><a href="#/admin/hotel/items/add/" class="addlink">Add</a></td>
+            
+
+            
+              
+                <td><a href="#" class="changelink">Change</a></td>
+              
+            
+          </tr>
+        
+          <tr class="model-jobs">
+            
+              <th scope="row"><a href="#">Jobss</a></th>
+            
+
+            
+              <td><a href="#" class="addlink">Add</a></td>
+            
+
+            
+              
+                <td><a href="#" class="changelink">Change</a></td>
+              
+            
+          </tr>
+        
+          <tr class="model-types">
+            
+              <th scope="row"><a href="#">Typess</a></th>
+            
+
+            
+              <td><a href="#" class="addlink">Add</a></td>
+            
+
+            
+              
+                <td><a href="#" class="changelink">Change</a></td>
+              
+            
+          </tr>
+        
+      </table>
+    </div>
+  
+
+
+</div>
+
+          
+
+</div>
+
+          <br class="clear">
+        </div>
+        <!-- END Content -->
+        <div id="footer"></div>
+      </div>
+    </div>
+</div>
+<!-- END Container -->
+</body>
+</html>

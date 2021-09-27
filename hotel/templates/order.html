@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+{%load static %}
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+	.aa {
+		text-decoration:none;
+	}
+	.box{
+		width: 400px;
+		min-height: 400px;
+		border-radius: 20rem;
+		display: none;
+	}
+	.pay{
+		width: 100%;
+		height: 20%;
+		border: none;
+		border-top-right-radius: 20px;
+
+
+
+	}
+	button{
+		outline: none;
+	}
+	.span{
+		padding-top: 35px;
+	}
+	.img{
+		height: 80px;
+		width: 80px;
+		float: left;
+		border-radius: 50%;
+	}
+	.upi{
+		width: 100%;
+		height: 80px;
+		
+	}.upi1{
+		width: 100%;
+		height: 80px;
+		
+
+	}.upi2{
+		width: 100%;
+		height: 80px;
+		
+
+	}
+	#card1,#card2{
+		width: 100%;
+		height: 200px;
+		display: none;
+	
+	}
+	#t,#t1,#t2{
+		display: none;
+		padding-left: 80px;
+	}#t1{
+		display: none;
+	}#t2{
+		display: none;
+	}
+	.Expiry{
+		
+		padding-left: 30px;
+	}.expiry,.cvv{
+		width: 80px;
+	}
+	.cvv1{
+		margin-left: 150px;
+
+	}
+	.m{
+		width: 90%;
+		margin-left: 5%;
+		border: none;
+		border-bottom: 1px solid;
+
+	}
+	.form{
+		height: 45px;
+		width: 74%;
+	}
+	.form1{
+		width: 80%;
+	}
+	.btn1{
+		font-size: 30px;
+		width: 50px;
+		height: 50px;
+		border-radius: 2rem;
+		margin-left: 5px;
+	}
+	.pay1{
+		width: 320px;
+		height: 80px;
+	}
+	.p{
+         width: 60px;
+         font-weight: 10px;
+		border-radius: 50%;
+		font-size: 20px;
+	}
+	a:hover {
+		text-decoration:none;
+		color: #fff;
+	}
+
+	</style>
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+<body> 
+
+	<div class="container">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Brown Multi Cuisine Restaurant</h1>
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="{% url 'home' %}" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="{% url 'about' %}" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="{% url 'contact' %}" class="tm-nav-link">Contact</a></li>
+								<li class="tm-nav-li"><a href="{% url 'login' %}" class="tm-nav-link" > Staff Login</a></li>
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main class="">
+			<div class="row">
+          
+              {% for order in order%}
+            <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item p-3">
+						<figure>
+							<img src="{{order.img.url}}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{order.types}}</a></h4>
+								<p class="tm-gallery-description">{{order.dicr}}</p>
+								<p class="tm-gallery-price">${{order.price}}</p>
+							</figcaption>
+						</figure>
+			</article>
+			
+           {% endfor%}
+            </div>
+            
+			<div class=" pt-4 ">
+				<div class="tm-container-inner-2 tm-contact-section">
+					<div class="row">
+						<div class="col-md-6">
+							<form action="conform_order"  class="tm-contact-form" method="post">
+							{% csrf_token %}
+								<div class="pb-4 text-danger" >Total price  $ {{price}}
+									<input type="Number" type="button" style="display:none" value='{{price}}' name='price' id='price'>
+								</div>
+
+						        <div class="form-group">
+						          <input type="text" name="contact_name" class="form-control" placeholder="Name" required="required" />
+						        </div>
+	                            <div class="form-group">
+						          <input type="cd" name="contact_no" class="form-control" placeholder="Number" required="required" />
+						        </div>
+						        <div class="form-group">
+						          <input type="email" name="contact_email" class="form-control" placeholder="Email" required="required" />
+						        </div>
+
+						        <div class="form-group">
+						          <textarea rows="5" name="contact" class="form-control" placeholder="Address" required="required"></textarea>
+						        </div>
+
+						        <div class="form-group tm-d-flex">
+						          <button type="button" class="tm-btn tm-btn-success tm-btn-right" onclick='display1("box")'>
+						            Conform Order
+						          </button>
+						        </div>
+
+							
+						</div>
+						<div class="col-md6">
+							<div id='box' style="display:none">
+								<button class="btn btn-success" type='button' onclick="display1('box1')" name='fullpayment' value="1"> Full Payment</button>
+								<button class="btn btn-danger" type='button' onclick="display2()" > Advance</button><br>
+								<label id="adv" class="form-control-label p-2 border border-light mt-2 " style="display:none">You need to pay atleast 25%  =  <input type="number" name='advance' id='advance' min='0'class=""style="width:100px" placeholder="{{adv}}"><br><span class="ml-1" title=" ">if you pay less than 25% your money not Refundable</span></label>
+							</div>
+							<div class="box mt-3" id="box1">
+								<img class='img'  src="{% static 'img/phone_pay.png' %}" alt="">
+									<button class="pay1 btn btn-light " type="button" onclick="toggle('t')">Phone pay
+									</button>
+								<div id="t">
+									<input type="text" class="btn form mb-1" placeholder="958XXXXXXX@ybl" name="phone_pay">
+										<button type="submit" class="btn btn-outline-primary btn-sm btn1" >
+											<i class="fas fa-angle-right"></i>
+										</button>
+								</div>
+								<img class='img'  src="{% static 'img/G_pay.png' %}" alt="">
+									<button class="pay1 btn btn-light " type="button" onclick="toggle('t1')">Google pay
+									</button>
+								<div id="t1">
+									<input type="text" class="btn form mb-1" placeholder="UPI id"name="upi">
+									<button type="submit"class="btn btn-outline-primary btn-sm btn1" >
+										<i class="fas fa-angle-right"></i>
+									</button>
+								</div>
+								<img class='img'  src="{% static 'img/paytm.png' %}" alt="">
+									<button class="pay1 btn btn-light " type="button" onclick="toggle('t2')">Paytm
+									</button>
+								<div id="t2">
+									<input type="text" class="btn form mb-1" placeholder="958XXXXXXX@paytm" name="paytm">
+									<button type="submit"class="btn btn-outline-primary btn-sm btn1" ><i class="fas fa-angle-right"></i>
+									</button>
+								</div>
+							
+								<img class='img'  src="{% static 'img/card.jpg' %}" alt=""><button type="button" class="pay1 btn btn-light "  onclick="toggle('card1')"><span class="span pt-5">Debit card</span></button>
+								
+								<div id="card1" >
+									<input type="text" class='form-control mt-3 m text-center' placeholder="Debit Card Holder">
+									<input type="text" class='form-control mb-3 m text-center' placeholder="Debit Card Number">
+									<div class="container">
+										<div class="row">
+											<div class='col-sm-6 pl-5'>
+												<span>Expiry date</span>
+												<input type="text" class='expiry form-control' placeholder="MM/YY">
+											</div>
+											
+											<div class='col-sm-6 pl-5'>
+												<span>CVV</span>
+												<input type="text" class='cvv form-control' placeholder="CVV">
+											</div>
+											<div class='cvv1'>
+												<button type="submit" class='cvv mb-1 form-control btn btn-outline-primary p'>></button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<img class='img'  src="{% static 'img/card.jpg' %}" alt=""><button type="button" class="pay1 btn btn-light "  onclick="toggle('card2')"><span class="span pt-5">Credit card</span></button>
+								<div id="card2">
+									<input type="text" class='form-control mt-3 m text-center' placeholder="Credit Card Holder">
+									<input type="text" class='form-control mb-3 m text-center' placeholder=" Credit Card Number">
+									<div class="container">
+										<div class="row">
+											<div class='col-sm-6 pl-5'>
+												<span>Expiry date</span>
+												<input type="text" class='expiry form-control' placeholder="MM/YY">
+											</div>
+											
+											<div class='col-sm-6 pl-5'>
+												<span>CVV</span>
+												<input type="text" class='cvv form-control' placeholder="CVV">
+											</div>
+											<div class='cvv1'>
+												<button type="submit" class='cvv mb-1 form-control btn btn-outline-primary p'>></button>
+											</div>
+										</div>
+									</div>
+							    </div>
+							</div>
+						</form>
+						</div>
+								
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+		<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2020 Brown Multi Cuisine Restaurant
+            
+            | Design: <a rel="nofollow" href="https://templatemo.com">Mahendra</a></p>
+		</footer>
+	</div>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+				
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+		
+	</script>
+	<script>
+	function display1(key){
+			var x =document.getElementById(key);
+			var y =document.getElementById('adv');
+			y.style.display = "none";
+					
+					if (x.style.display === "none") {
+					    x.style.display = "block";
+					  } else {
+					    x.style.display = "block";
+					  }
+					
+		}
+		function toggle(key){
+			var x =document.getElementById(key);
+					
+					if (x.style.display === "none") {
+					    x.style.display = "block";
+					  } else {
+					    x.style.display = "none";
+					  }
+
+		}
+		function display2(){
+			var x =document.getElementById('adv');
+			var y =document.getElementById('box1');
+					if (x.style.display === "none") {
+					    x.style.display = "block";
+					  } else {
+					    x.style.display = "block";
+					  }
+
+					  if (y.style.display === "none") {
+					    y.style.display = "block";
+					  } else {
+					    y.style.display = "block";
+					  }
+
+		}
+		
+		
+	</script>
+</body>
+</html>

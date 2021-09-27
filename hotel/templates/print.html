@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en "
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BILL</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+	.bor{
+		border-top: 3px dashed black;
+		border-bottom: 3px dashed black;
+	}
+	.or{
+		border-bottom: 3px dashed black;
+	}
+	.box{
+		width: 500px;
+	}
+</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<div class="row">
+			<div class=" col-lg-3 "></div>
+			<div class="box col-5">
+				<div class="bor  mt-3 ">
+
+					<h5 class="text-center ">Brown Multi Cuisine Restaurant</h5>
+					<h5 class="text-center ">Address</h5>
+					<h6 class="text-center ">{{addr1}}</h6>
+					<h6 class="text-center ">{{date}} at {{time}}</h6>
+					
+				</div>
+				<div class="card-body">
+					
+
+					<h4 class="mt-3 or">Items <span class="float-right"> Order Id {{addr.id}}</span> </h4>
+					<table>
+						{% for i in items%}
+						
+						
+						<tr >
+							<th>{{i.name}}</th>
+							
+							<th>$ {{i.price}}</th>
+						</tr>
+						{% endfor%}
+
+						<tr>
+							<th>total</th>
+							
+							<th>$ {{subtotal}}</th>
+
+						</tr>
+                        <tr>
+                             {% if addr.advance %}
+							<th>Advance</th>
+							<th>$ {{addr.advance}}</th>
+							{% else %}
+							<th>Paid</th>
+							<th>$ {{addr.total}}</th>
+							{% endif %}
+							
+						</tr>
+						<tr>
+							<th>balance</th>
+							
+							<th>$ {{addr.balance}}</th>
+						</tr>
+
+						
+					</table>
+					<h4 class="mt-3">Address:</h4>
+					<h5>{{addr.name}}</h5>
+					<h6 class="text-center">{{addr.addr}}</h6>
+					<h3 class="text-center bor mt-4">Thank You for Ordering</h3>
+				</div>
+				
+					<a href="../../" class="btn btn-info">Back</a>
+					<a href="../../" class="btn btn-primary float-right">Print</a>
+				
+			</div>
+			<div class=" col-lg-3 "></div>
+		</div>
+	</div>
+</body>
+</html>

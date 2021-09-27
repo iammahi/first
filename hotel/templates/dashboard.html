@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <title>CRM</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+      #logo{
+		}
+
+		body{
+			background-color: #ebeff5;
+		}
+
+
+		#total-orders{
+			background-color: #4cb4c7;
+		}
+
+
+		#orders-delivered{
+			background-color: #7abecc;
+		}
+
+		#orders-pending{
+			background-color: #7CD1C0;
+		}
+
+    </style>
+    <script>
+   function timedRefresh(timeoutPeriod) {
+	 setTimeout("location.reload(true);",timeoutPeriod);
+}
+ window.onload = timedRefresh(10000);
+     </script>
+</head>
+<body>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'a' %}">Products</a>
+      </li>
+
+    </ul>
+
+  </div>
+  <span class="float-right text-white pr-3">{{request.user}}</span>
+       <span class="float-right"><a href="{% url 'logout' %}" class="text-white" style="text-decoration:none">Logout</a> </span>
+</nav>
+</div>
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Orders</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Delivered</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{d}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Pending</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{pending}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md-12">
+		<h5 class="ml-3">ORDERS:</h5>
+
+		<div class="card card-body">
+
+			<table class="table table-sml">
+				<tr>
+					<th class="text-center">Order Id</th>
+					
+          <th class="text-center">Product</th>
+					<th class="text-center">Payment Mode</th>
+					<th class="text-center">Balance</th>
+					<th class="text-center">Orderd Date </th>
+					<th class="text-center">Orderd Time </th>
+					<th class="text-center">Status</th>
+					<th class="text-center">Delivery boy Id</th>
+					<th class="text-center">Bill</th>
+					<th class="text-center">Assign Staff</th>
+					<th class="text-center">Remove</th>
+				</tr>
+				{% for i in form %}
+				<tr>
+					<td class="text-center">{{i.id}}</td>
+				
+          <td class="text-center"><a href="{% url 'items' i.id %}" class="btn btn-light">Items</a></td>
+					<td class="text-center">{{i.payment_mode}}</td>
+					<td class="text-center">{{i.balance}}</td>
+					<td class="text-center">{{i.date}}</td>
+					<td class="text-center">{{i.time}}</td>
+					<td class="text-center">{{i.status}}</td>
+					<td class="text-center">{{i.delivery_boy_id}}</td>
+					<td class="text-center"><a href="{% url 'print' i.id %}" class="btn btn-primary">Print</a></td>
+					<td class="text-center"><a  href='{% url 'update' i.id %}' class="btn btn-success">Update</a></td>
+					<td class="text-center"><a href='{% url 'remove' i.id %}'class="btn btn-danger">remove</a></td>
+				</tr>
+        {% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+
+
+  
+
+
+</script>
+</html>
+</html>

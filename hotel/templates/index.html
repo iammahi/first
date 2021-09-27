@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House Template</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet" />
+
+	<style>
+	a:hover {
+		text-decoration:none;
+		color: #fff;
+	}
+	.mahi{
+		font-size: 1.25rem;
+        color: #2F956D;
+        margin-bottom: 10px;
+}
+.btn1{
+	height: 50px;
+	width: 20px;
+	display: inline-block;
+	outline: none;important !important
+}
+
+	</style>
+
+
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+<body>
+<?php
+$txt = "PHP";
+echo "I laove $txt!";
+?>
+
+	<div class="container mx">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" />
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Brown Multi Cuisine Restaurant</h1>
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="{% url 'home' %}" class="tm-nav-link active a">Home</a></li>
+								<li class="tm-nav-li"><a href="{% url 'about' %}" class="tm-nav-link a">About</a></li>
+								<li class="tm-nav-li"><a href="{% url 'contact' %}" class="tm-nav-link a">Contact</a></li>
+								<li class="tm-nav-li"><a href="{% url 'login' %}" class="tm-nav-link" > Staff Login</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to Brown Multi Cuisine Restaurant</h2>
+			</header>
+
+
+			<div class="tm-paging-links">
+				<nav>
+					<ul>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link active">Pizza</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Noodle</a></li>
+					</ul>
+				</nav>
+			</div>
+                <form action="" method="POST">
+						{% csrf_token %}
+			<!-- Gallery -->
+			<div class="row tm-gallery">
+				<!-- gallery page 1 -->
+				<div id="tm-gallery-page-pizza" class="tm-gallery-page">
+				 {% for i in f %}
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{{i.img.url}}" lt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{i.types}}</a></h4>
+								<p class="tm-gallery-description">{{i.dicr}}</p>
+								<p class=" mahi">${{i.price}} </p>
+								<!--<a  class="btn  mb-3 mahi " onclick="mahi()"> Select Item</a>-->
+								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
+
+							</figcaption>
+						</figure>
+					</article>
+			     {% endfor %}
+				</div> <!-- gallery page 1 -->
+
+				<!-- gallery page 2 -->
+				<div id="tm-gallery-page-salad" class="tm-gallery-page hidden">
+				{% for i in f2 %}
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{{i.img.url}}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{i.types}}</a></h4>
+
+								<p class="tm-gallery-description">{{i.dicr}}</p>
+								<p class="tm-gallery-price">${{i.price}}</p>
+								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
+
+							</figcaption>
+						</figure>
+					</article>
+					
+					{% endfor %}
+				</div> <!-- gallery page 2 -->
+
+				<!-- gallery page 3 -->
+				<div id="tm-gallery-page-noodle" class="tm-gallery-page hidden">
+				{% for i in f3 %}
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{{i.img.url}}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{i.types}}</a></h4>
+								<p class="tm-gallery-description">{{i.dicr}}</p>
+								<p class="tm-gallery-price">${{i.price}}</p>
+								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
+
+							</figcaption>
+						</figure>
+					</article>
+
+                       {% endfor %}
+				</div> <!-- gallery page 3 -->
+				<div class="float-right" style="margin-left: 40%;">
+					
+						<button type="submit" class="btn btn-outline-success  p-2 " onclick="order()" value="1" name='m'id='id'  >Order Here</button>
+					
+					 
+				</div>
+                </form>
+			</div>
+			<div class="tm-section tm-container-inner">
+				<div class="row">
+					<div class="col-md-6">
+						<figure class="tm-description-figure">
+							<img src="{% static 'img/img-01.jpg' %}" alt="Image" class="img-fluid" />
+						</figure>
+					</div>
+					<div class="col-md-6">
+						<div class="tm-description-box">
+							<h4 class="tm-gallery-title">Maecenas nulla neque</h4>
+							<p class="tm-mb-45">Redistributing this template as a downloadable ZIP file on any template collection site is strictly prohibited. You will need to <a rel="nofollow" href="https://templatemo.com/contact">talk to us</a> for additional permissions about our templates. Thank you.</p>
+							<a href="{% url 'about' %}" class="tm-btn tm-btn-default tm-right">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</main>
+
+		<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2020 Brown Multi Cuisine Restaurant
+
+            | Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
+		</footer>
+	</div>
+    <script>
+  {% if message %}
+  alert('invalied Username and Password')
+    
+  {% endif %}
+</script>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+	<script>
+	var list = []
+	function mahi(x){
+        list.push(x)
+	}
+        
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+
+         $(".mahi" ).click(function() {
+
+       $( this ).addClass( "btn-success" );
+       });
+
+        
+
+		});
+		
+
+	</script>
+<script>
+
+    
+</script>
+</body>
+</html>
