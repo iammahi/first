@@ -13,7 +13,7 @@ lis =[]
 # Create your views here.
 def Admin(request):
     return render(request,'admin.html')
-
+"""
 class Home(View):
     global lis
     f = Types.objects.filter(name=1)
@@ -25,6 +25,7 @@ class Home(View):
     def post(self,request):
         self.lis = request.POST.getlist('key')
         price=0
+        lis =map(int,self.lis)
         order =Types.objects.filter(id__in=list(self.lis))
         for i in order:
             price=price+i.price
@@ -39,7 +40,7 @@ def Home(request):
     f = Types.objects.filter(name=1)
     f2 = Types.objects.filter(name=2)
     f3 = Types.objects.filter(name=3)
-    return render(request,'index.html' ,{"f":f,"f2":f2,'f3':f3})"""
+    return render(request,'index.html' ,{"f":f,"f2":f2,'f3':f3})
 
 def About(request):
     form = Jobs.objects.all()
@@ -48,7 +49,7 @@ def Contact(request):
     form =Address.objects.get(id=1)
     
     return render(request,'contact.html',{'form':form})
-"""
+
 def Order(request):
     global lis
     if request.method == 'POST':
@@ -58,7 +59,7 @@ def Order(request):
         for i in order:
             price=price+i.price
         adv = price*25/100
-        return render(request ,'order.html',{'order':order ,'price':price,'lis':lis,'adv':round(adv,1)})"""
+        return render(request ,'order.html',{'order':order ,'price':price,'lis':lis,'adv':round(adv,1)})
 @login_required
 def Dashboard(request):
     ords = ConForm_Orders.objects.order_by('-id')
@@ -141,7 +142,8 @@ def Conform_orders(request):
                "price":i.price             
                } for i in lis
                  ] 
-        list_1 = json.dumps(list(list_1))
+        list_1 = json.dumps(list_1)
+        print(lis)
         if advance:    
             if Phone_pay:
                 conform_order = ConForm_Orders(price=Price,name=Name, email=Email, ph_no=No, addr=Addr, payment=Phone_pay,json=list_1,payment_mode='advance',advance=advance,balance=float(Price)-float(advance))

@@ -21,13 +21,16 @@
 		font-size: 1.25rem;
         color: #2F956D;
         margin-bottom: 10px;
-}
-.btn1{
-	height: 50px;
-	width: 20px;
-	display: inline-block;
-	outline: none;important !important
-}
+	}
+	.btn1{
+		height: 50px;
+		width: 20px;
+		display: inline-block;
+		outline: none;important !important
+	}
+
+
+
 
 	</style>
 
@@ -41,10 +44,6 @@ https://templatemo.com/tm-539-simple-house
 
 -->
 <body>
-<?php
-$txt = "PHP";
-echo "I laove $txt!";
-?>
 
 	<div class="container mx">
 	<!-- Top box -->
@@ -87,7 +86,7 @@ echo "I laove $txt!";
 					</ul>
 				</nav>
 			</div>
-                <form action="" method="POST">
+                <form action="order" method="POST">
 						{% csrf_token %}
 			<!-- Gallery -->
 			<div class="row tm-gallery">
@@ -102,7 +101,12 @@ echo "I laove $txt!";
 								<p class="tm-gallery-description">{{i.dicr}}</p>
 								<p class=" mahi">${{i.price}} </p>
 								<!--<a  class="btn  mb-3 mahi " onclick="mahi()"> Select Item</a>-->
-								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
+								<div id="">
+								   <label>
+								      <input type="checkbox" name ='key' value='{{i.id}}' hidden><span class="btn btn-outline-success mahi">select</span>
+								   </label>
+								</div>
+							<!---	<input type="checkbox" name="key" value='{{i.id}}' id='ck-button' hidden><span >select</span> -->
 
 							</figcaption>
 						</figure>
@@ -121,7 +125,9 @@ echo "I laove $txt!";
 
 								<p class="tm-gallery-description">{{i.dicr}}</p>
 								<p class="tm-gallery-price">${{i.price}}</p>
-								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
+								<label>
+								      <input type="checkbox" name ='key' value='{{i.id}}' hidden><span class="btn btn-outline-success mahi">select</span>
+								</label>
 
 							</figcaption>
 						</figure>
@@ -140,8 +146,9 @@ echo "I laove $txt!";
 								<h4 class="tm-gallery-title"><a href="#" class='aa tm-gallery-title'>  {{i.types}}</a></h4>
 								<p class="tm-gallery-description">{{i.dicr}}</p>
 								<p class="tm-gallery-price">${{i.price}}</p>
-								<input type="checkbox" name="key" value='{{i.id}}' class="btn1 btn "><span style="margin-left:10px">select</span>
-
+								<label>
+								      <input type="checkbox" name ='key' value='{{i.id}}' hidden><span class="btn btn-outline-success mahi">select</span>
+								</label>
 							</figcaption>
 						</figure>
 					</article>
@@ -209,8 +216,19 @@ echo "I laove $txt!";
 			});
 
          $(".mahi" ).click(function() {
+         	    if ($(this).hasClass('btn-outline-success'))
+         	    {
+         	    	$(this).removeClass('btn-outline-success');
+                    $( this ).addClass( "btn-success" );
 
-       $( this ).addClass( "btn-success" );
+         	    }
+         	    else{
+         		$(this).removeClass('btn-success');
+                $( this ).addClass( "btn-outline-success" );
+                
+                }
+
+         	
        });
 
         
