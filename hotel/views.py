@@ -13,29 +13,7 @@ lis =[]
 # Create your views here.
 def Admin(request):
     return render(request,'admin.html')
-"""
-class Home(View):
-    global lis
-    f = Types.objects.filter(name=1)
-    #f=Types.object.raw('selct * from ')
-    f2 = Types.objects.filter(name=2)
-    f3 = Types.objects.filter(name=3)
-    def get(self,request):
-        return render(request,'index.html' ,{"f":self.f,"f2":self.f2,'f3':self.f3})
-    def post(self,request):
-        self.lis = request.POST.getlist('key')
-        price=0
-        lis =map(int,self.lis)
-        order =Types.objects.filter(id__in=list(self.lis))
-        for i in order:
-            price=price+i.price
-        adv = price*25/100
-        return render(request ,'order.html',{'order':order ,'price':price,'lis':self.lis,'adv':round(adv,1)})
-
-
-
-
-"""        
+       
 def Home(request): 
     f = Types.objects.filter(name=1)
     f2 = Types.objects.filter(name=2)
